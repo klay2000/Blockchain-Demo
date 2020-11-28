@@ -73,6 +73,8 @@ class BlockChain:
             n = n.prev
             a += 1
 
+        valid_label.config(text=("valid" if valid else "invalid!"))
+
         return valid
 
 
@@ -127,7 +129,8 @@ Button(add_sub_frame, text="Add Block", command=lambda: chain.add(str(random.ran
 Button(add_sub_frame, text="Delete Block", command=lambda: chain.remove(block_list.curselection()[0]))\
     .grid(column=1, row=0)
 Button(list_frame, text="validate Chain", command=lambda: chain.validate(verbose=True)).grid(column=0, row=2)
-
+valid_label = Label(list_frame)
+valid_label.grid(column=0, row=3)
 
 # adding the block editor and preparing vars
 block_num = StringVar()
@@ -157,10 +160,6 @@ ttk.Label(block_edit, textvariable=block_prev_hash).grid(column=1, row=2)
 ttk.Label(block_edit, text="Block's Hash: ").grid(column=0, row=3)
 ttk.Label(block_edit, textvariable=block_hash).grid(column=1, row=3)
 
-
-# adding the notifications area
-notifications = ttk.Frame(main_frame)
-notifications.grid(column=2, row=0, sticky=(N, S, E))
 
 block_list.select_set(0)
 select_block(None)
