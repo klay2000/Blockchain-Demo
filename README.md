@@ -1,2 +1,2 @@
 # Blockchain-Demo
-A python blockchain demo program I wrote for a school project.
+A blockchain demo program I wrote in python for a school project.
